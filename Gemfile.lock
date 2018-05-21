@@ -2,7 +2,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     backports (3.11.3)
+    daemons (1.2.6)
     dotenv (2.2.1)
+    eventmachine (1.2.5)
     multi_json (1.13.1)
     mustermann (1.0.2)
     oauth (0.5.4)
@@ -21,6 +23,10 @@ GEM
       rack-protection (= 2.0.1)
       sinatra (= 2.0.1)
       tilt (>= 1.3, < 3)
+    thin (1.7.2)
+      daemons (~> 1.0, >= 1.0.9)
+      eventmachine (~> 1.0, >= 1.0.4)
+      rack (>= 1, < 3)
     tilt (2.0.8)
     upwork-api (1.2.2)
       oauth (>= 0.4.7)
@@ -32,6 +38,7 @@ DEPENDENCIES
   dotenv
   sinatra
   sinatra-contrib
+  thin
   upwork-api
 
 BUNDLED WITH

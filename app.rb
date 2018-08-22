@@ -26,7 +26,7 @@ class HoursApp < Sinatra::Base
       )
       times = report_response['table']['rows'].map do |row|
         if row['c'].is_a?(Array)
-          row['c'].last['v']
+          row['c'].last['v'].to_f
         else
           row['c']['v'].to_f
         end

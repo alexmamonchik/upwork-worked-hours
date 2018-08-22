@@ -22,11 +22,11 @@ class HoursApp < Sinatra::Base
       report_response = report.get_by_freelancer_limited(
         ENV['UPWORK_USERNAME'],
         tqx: 'out:json',
-        tq: "select hours where worked_on >= '#{monday.strftime("%Y-%m-%d")}' AND worked_on <= '#{sunday.strftime("%Y-%m-%d")}' order by worked_on"
+        tq: "select worked_on, hours where worked_on >= '#{monday.strftime("%Y-%m-%d")}' AND worked_on <= '#{sunday.strftime("%Y-%m-%d")}' order by worked_on"
       )
       times = report_response['table']['rows'].map do |row|
         if row['c'].is_a?(Array)
-          row['c'].map { |c| c['v'].to_f }.inject(:+)
+          row['c'].last['v']
         else
           row['c']['v'].to_f
         end
